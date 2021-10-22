@@ -1,16 +1,33 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import md5File from 'md5-file'
+import md5 from 'md5'
+import path from 'path'
+import { getAllPackages } from 'standard-monorepo'
+
+const getCacheKey = (prefix: string) => {
+  const context = process.cwd()
+  const packages = getAllPackages(context)
+
+  const inputs = [
+    ...packages.map(({ location }) => location),
+    path.join(context, 'package.json'),
+    path.join(context, 'yarn.lock'),
+  ]
+
+  const cacheKey = inputs
+    .map(md5File.sync)
+    .reduce((acc: string, cur: string) => md5(acc + cur), '') as string
+
+  return prefix ? `${prefix}-${cacheKey}` : cacheKey
+}
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+    const prefix: string = core.getInput('cache-prefix')
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    const cacheKey = getCacheKey(prefix)
 
-    core.setOutput('time', new Date().toTimeString())
+    core.setOutput('cacheKey', cacheKey)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
