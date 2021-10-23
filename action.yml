@@ -1,11 +1,10 @@
-name: 'Your name here'
+name: 'Monorepo Cache'
 description: 'Provide a description here'
-author: 'Your name or organization here'
+author: 'flaviouk'
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  cache-prefix:
+    required: false
+    description: 'cache will be prefix with this'
 runs:
   using: 'node12'
   main: 'dist/index.js'
