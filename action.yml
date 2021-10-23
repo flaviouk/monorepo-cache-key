@@ -1,5 +1,5 @@
-name: 'Monorepo Cache'
-description: 'Provide a description here'
+name: 'Monorepo Cache Key'
+description: 'outputs a cache key for your monorepo node_modules'
 author: 'flaviouk'
 inputs:
   cache-prefix:

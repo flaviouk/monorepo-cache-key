@@ -4,17 +4,19 @@
   "private": true,
   "description": "Monorepo Cache Key",
   "main": "lib/main.js",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "format": "prettier --write '**/*.ts'",
-    "format-check": "prettier --check '**/*.ts'",
+    "format": "prettier --write '**/*.{ts,yml,md,json}'",
+    "format-check": "prettier --check '**/*.{ts,yml,md,json}'",
     "package": "ncc build --source-map --license licenses.txt",
     "all": "yarn format && yarn build && yarn package"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flaviouk/monorepo-cache.git"
+    "url": "git+https://github.com/flaviouk/monorepo-cache-key.git"
   },
   "keywords": [
     "actions",

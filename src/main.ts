@@ -2,16 +2,16 @@ import * as core from '@actions/core'
 import md5File from 'md5-file'
 import md5 from 'md5'
 import path from 'path'
-import { getAllPackages } from 'standard-monorepo'
+import {getAllPackages} from 'standard-monorepo'
 
 const getCacheKey = (prefix: string) => {
   const context = process.cwd()
   const packages = getAllPackages(context)
 
   const inputs = [
-    ...packages.map(({ location }) => location),
+    ...packages.map(({location}) => location),
     path.join(context, 'package.json'),
-    path.join(context, 'yarn.lock'),
+    path.join(context, 'yarn.lock')
   ]
 
   const cacheKey = inputs
