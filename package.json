@@ -32,7 +32,7 @@
     "@types/md5": "2.3.1",
     "@vercel/ncc": "^0.31.1",
     "js-yaml": "^4.1.0",
-    "standard-monorepo": "0.6.1",
+    "standard-monorepo": "0.7.1",
     "md5": "2.3.0",
     "md5-file": "5.0.0",
     "prettier": "2.4.1",
