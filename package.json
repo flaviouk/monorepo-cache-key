@@ -36,7 +36,7 @@
     "md5": "2.3.0",
     "md5-file": "5.0.0",
     "prettier": "2.4.1",
-    "typescript": "^4.4.4"
+    "typescript": "^4.7.2"
   },
   "volta": {
     "node": "15.14.0",
